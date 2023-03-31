@@ -1,7 +1,7 @@
 import time
 from PyQt5.QtWidgets import QWidget, QProgressBar, QLabel, QFrame, QVBoxLayout
 from PyQt5.QtCore import Qt, QTimer
-from frontend.dashboard import Dashboard
+from frontend.dashboardHandler import Dashboard
 
 class SplashScreen(QWidget):
     def __init__(self):

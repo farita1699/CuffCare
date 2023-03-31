@@ -1,8 +1,10 @@
+import threading
 from pyqtgraph import PlotWidget
 from PyQt5.QtWidgets import QDesktopWidget, QGridLayout, QLabel, QMainWindow, QSizePolicy, QWidget
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont
 from frontend.graph import Graph
+from sensor.socketHandler import sensor_data_thread, shared_data
 
 class Dashboard(QMainWindow):
     def __init__(self):
@@ -35,6 +37,9 @@ class Dashboard(QMainWindow):
         widget1.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         layout.addWidget(widget1, 1, 0)
 
+        # sensor_thread = threading.Thread(target=sensor_data_thread, args=(shared_data,))
+        # sensor_thread.start()
+        
         widget2 = Graph()
         layout.addWidget(widget2, 1, 1)
 
