@@ -1,0 +1,15 @@
+import csv
+
+class CSVHandler:
+    def __init__(self, filename):
+        self.filename = filename
+        self.header_written = False
+
+    def write_data_to_csv(self, data):
+        with open(self.filename, mode='a', newline='') as csv_file:
+            writer = csv.writer(csv_file)
+            if not self.header_written:
+                writer.writerow(data[0]._fields)
+                self.header_written = True
+            for row in data:
+                writer.writerow(row)
