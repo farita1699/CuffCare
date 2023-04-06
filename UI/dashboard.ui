@@ -7,8 +7,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
-    <height>720</height>
+    <width>2400</width>
+    <height>1800</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -1925,7 +1925,7 @@ QPushButton:pressed {
                                   <number>1</number>
                                  </property>
                                  <property name="text">
-                                  <string>Session not loaded. Click on &quot;Load session&quot; to replay previous essions.</string>
+                                  <string>Session not loaded. Click on &quot;Load session&quot; to select a previous session.</string>
                                  </property>
                                  <property name="alignment">
                                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1967,10 +1967,10 @@ border-radius: 5px;</string>
                          <property name="spacing">
                           <number>6</number>
                          </property>
-                         <item row="3" column="0">
-                          <widget class="QComboBox" name="comboBox">
+                         <item row="0" column="5" rowspan="7">
+                          <widget class="QPushButton" name="pushButton_3">
                            <property name="sizePolicy">
-                            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                              <horstretch>0</horstretch>
                              <verstretch>0</verstretch>
                             </sizepolicy>
@@ -1978,7 +1978,143 @@ border-radius: 5px;</string>
                            <property name="minimumSize">
                             <size>
                              <width>0</width>
+                             <height>75</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>300</width>
+                             <height>100</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <family>Segoe UI</family>
+                             <pointsize>15</pointsize>
+                            </font>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">QPushButton {
+	border: 2px solid rgb(52, 59, 72);
+	border-radius: 5px;	
+	background-color: rgb(52, 59, 72);
+}
+QPushButton:hover {
+	background-color: rgb(57, 65, 80);
+	border: 2px solid rgb(61, 70, 86);
+}
+QPushButton:pressed {	
+	background-color: rgb(35, 40, 49);
+	border: 2px solid rgb(43, 50, 61);
+}</string>
+                           </property>
+                           <property name="text">
+                            <string>End session</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="4" rowspan="7">
+                          <widget class="QPushButton" name="pushButton_2">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>75</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>300</width>
+                             <height>100</height>
+                            </size>
+                           </property>
+                           <property name="baseSize">
+                            <size>
+                             <width>0</width>
                              <height>0</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <family>Segoe UI</family>
+                             <pointsize>15</pointsize>
+                            </font>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">QPushButton {
+	border: 2px solid rgb(52, 59, 72);
+	border-radius: 5px;	
+	background-color: rgb(52, 59, 72);
+}
+QPushButton:hover {
+	background-color: rgb(57, 65, 80);
+	border: 2px solid rgb(61, 70, 86);
+}
+QPushButton:pressed {	
+	background-color: rgb(35, 40, 49);
+	border: 2px solid rgb(43, 50, 61);
+}</string>
+                           </property>
+                           <property name="text">
+                            <string>Start</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="2" column="3">
+                          <spacer name="horizontalSpacer_2">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeType">
+                            <enum>QSizePolicy::Fixed</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>100</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item row="2" column="1">
+                          <spacer name="horizontalSpacer">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeType">
+                            <enum>QSizePolicy::Fixed</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>100</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item row="2" column="0">
+                          <widget class="QComboBox" name="comboBox">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="minimumSize">
+                            <size>
+                             <width>450</width>
+                             <height>0</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>600</width>
+                             <height>16777215</height>
                             </size>
                            </property>
                            <property name="font">
@@ -2025,77 +2161,19 @@ QComboBox QAbstractItemView {
                            </item>
                           </widget>
                          </item>
-                         <item row="1" column="1" rowspan="3">
-                          <widget class="QLabel" name="label_10">
-                           <property name="font">
-                            <font>
-                             <family>Segoe UI</family>
-                             <pointsize>30</pointsize>
-                             <weight>75</weight>
-                             <bold>true</bold>
-                            </font>
-                           </property>
-                           <property name="layoutDirection">
-                            <enum>Qt::LeftToRight</enum>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">text-align: center;</string>
-                           </property>
-                           <property name="text">
-                            <string>0</string>
-                           </property>
-                           <property name="alignment">
-                            <set>Qt::AlignCenter</set>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="3" column="3">
-                          <widget class="QPushButton" name="pushButton_3">
+                         <item row="0" column="0" rowspan="2">
+                          <widget class="QLabel" name="label_3">
                            <property name="sizePolicy">
-                            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                              <horstretch>0</horstretch>
                              <verstretch>0</verstretch>
                             </sizepolicy>
                            </property>
                            <property name="minimumSize">
                             <size>
-                             <width>100</width>
-                             <height>40</height>
+                             <width>0</width>
+                             <height>0</height>
                             </size>
-                           </property>
-                           <property name="font">
-                            <font>
-                             <family>Segoe UI</family>
-                             <pointsize>9</pointsize>
-                            </font>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">QPushButton {
-	border: 2px solid rgb(52, 59, 72);
-	border-radius: 5px;	
-	background-color: rgb(52, 59, 72);
-}
-QPushButton:hover {
-	background-color: rgb(57, 65, 80);
-	border: 2px solid rgb(61, 70, 86);
-}
-QPushButton:pressed {	
-	background-color: rgb(35, 40, 49);
-	border: 2px solid rgb(43, 50, 61);
-}</string>
-                           </property>
-                           <property name="text">
-                            <string>Stop</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="0" column="0" rowspan="3">
-                          <widget class="QLabel" name="label_3">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
                            </property>
                            <property name="font">
                             <font>
@@ -2116,116 +2194,173 @@ margin-top: 5px;
                            </property>
                           </widget>
                          </item>
-                         <item row="0" column="1">
-                          <widget class="QLabel" name="label_9">
-                           <property name="minimumSize">
-                            <size>
-                             <width>100</width>
-                             <height>0</height>
-                            </size>
-                           </property>
-                           <property name="font">
-                            <font>
-                             <family>Segoe UI</family>
-                             <pointsize>9</pointsize>
-                             <weight>75</weight>
-                             <bold>true</bold>
-                            </font>
-                           </property>
-                           <property name="text">
-                            <string>Angles</string>
-                           </property>
-                           <property name="alignment">
-                            <set>Qt::AlignCenter</set>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="0" column="3" rowspan="3">
-                          <widget class="QPushButton" name="pushButton_2">
+                         <item row="0" column="2" rowspan="6">
+                          <widget class="QWidget" name="widget" native="true">
                            <property name="sizePolicy">
-                            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                              <horstretch>0</horstretch>
                              <verstretch>0</verstretch>
                             </sizepolicy>
                            </property>
                            <property name="minimumSize">
                             <size>
-                             <width>100</width>
+                             <width>500</width>
                              <height>40</height>
                             </size>
                            </property>
-                           <property name="baseSize">
+                           <property name="maximumSize">
                             <size>
-                             <width>0</width>
-                             <height>0</height>
+                             <width>16777215</width>
+                             <height>200</height>
                             </size>
-                           </property>
-                           <property name="font">
-                            <font>
-                             <family>Segoe UI</family>
-                             <pointsize>9</pointsize>
-                            </font>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">QPushButton {
-	border: 2px solid rgb(52, 59, 72);
-	border-radius: 5px;	
-	background-color: rgb(52, 59, 72);
-}
-QPushButton:hover {
-	background-color: rgb(57, 65, 80);
-	border: 2px solid rgb(61, 70, 86);
-}
-QPushButton:pressed {	
-	background-color: rgb(35, 40, 49);
-	border: 2px solid rgb(43, 50, 61);
-}</string>
+                            <string notr="true">border: 5px solid rgba(80, 80, 80, 255);
+background-color: rgba(27, 29, 35, 160);
+border-radius: 10px;
+</string>
                            </property>
-                           <property name="text">
-                            <string>Start</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="0" column="2">
-                          <widget class="QLabel" name="label_11">
-                           <property name="minimumSize">
-                            <size>
-                             <width>100</width>
-                             <height>0</height>
-                            </size>
-                           </property>
-                           <property name="font">
-                            <font>
-                             <family>Segoe UI</family>
-                             <pointsize>9</pointsize>
-                             <weight>75</weight>
-                             <bold>true</bold>
-                            </font>
-                           </property>
-                           <property name="text">
-                            <string>Accuracy</string>
-                           </property>
-                           <property name="alignment">
-                            <set>Qt::AlignCenter</set>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="1" column="2" rowspan="3">
-                          <widget class="QLabel" name="label_12">
-                           <property name="font">
-                            <font>
-                             <family>Segoe UI</family>
-                             <pointsize>30</pointsize>
-                             <weight>75</weight>
-                             <bold>true</bold>
-                            </font>
-                           </property>
-                           <property name="text">
-                            <string>0</string>
-                           </property>
-                           <property name="alignment">
-                            <set>Qt::AlignCenter</set>
-                           </property>
+                           <layout class="QGridLayout" name="gridLayout_3">
+                            <item row="1" column="2">
+                             <widget class="QLabel" name="label_11">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                               <size>
+                                <width>100</width>
+                                <height>0</height>
+                               </size>
+                              </property>
+                              <property name="font">
+                               <font>
+                                <family>Segoe UI</family>
+                                <pointsize>9</pointsize>
+                                <weight>75</weight>
+                                <bold>true</bold>
+                               </font>
+                              </property>
+                              <property name="autoFillBackground">
+                               <bool>false</bool>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">border: none;</string>
+                              </property>
+                              <property name="text">
+                               <string>Accuracy</string>
+                              </property>
+                              <property name="alignment">
+                               <set>Qt::AlignCenter</set>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="2" column="1">
+                             <widget class="QLabel" name="label_10">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>10</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>16777215</width>
+                                <height>100</height>
+                               </size>
+                              </property>
+                              <property name="font">
+                               <font>
+                                <family>Segoe UI</family>
+                                <pointsize>30</pointsize>
+                                <weight>75</weight>
+                                <bold>true</bold>
+                               </font>
+                              </property>
+                              <property name="layoutDirection">
+                               <enum>Qt::LeftToRight</enum>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">text-align: center;
+border: 3px solid rgba(27, 29, 35, 160);</string>
+                              </property>
+                              <property name="text">
+                               <string>0</string>
+                              </property>
+                              <property name="alignment">
+                               <set>Qt::AlignCenter</set>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="1" column="1">
+                             <widget class="QLabel" name="label_9">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                               <size>
+                                <width>100</width>
+                                <height>0</height>
+                               </size>
+                              </property>
+                              <property name="font">
+                               <font>
+                                <family>Segoe UI</family>
+                                <pointsize>9</pointsize>
+                                <weight>75</weight>
+                                <bold>true</bold>
+                               </font>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">border: none;</string>
+                              </property>
+                              <property name="text">
+                               <string>Angles</string>
+                              </property>
+                              <property name="alignment">
+                               <set>Qt::AlignCenter</set>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="2" column="2">
+                             <widget class="QLabel" name="label_12">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="font">
+                               <font>
+                                <family>Segoe UI</family>
+                                <pointsize>30</pointsize>
+                                <weight>75</weight>
+                                <bold>true</bold>
+                               </font>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">border: none;</string>
+                              </property>
+                              <property name="text">
+                               <string>0</string>
+                              </property>
+                              <property name="alignment">
+                               <set>Qt::AlignCenter</set>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
                           </widget>
                          </item>
                         </layout>
@@ -2269,23 +2404,43 @@ border-radius: 5px;</string>
                        </property>
                        <item>
                         <layout class="QGridLayout" name="gridLayout_4">
-                         <item row="1" column="1">
-                          <widget class="QFrame" name="frame_5">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
+                         <item row="3" column="0">
+                          <widget class="QLabel" name="label_7">
+                           <property name="font">
+                            <font>
+                             <family>Segoe UI</family>
+                             <pointsize>9</pointsize>
+                             <weight>75</weight>
+                             <bold>true</bold>
+                            </font>
                            </property>
-                           <property name="frameShape">
-                            <enum>QFrame::StyledPanel</enum>
+                           <property name="styleSheet">
+                            <string notr="true">margin-left: 5px;</string>
                            </property>
-                           <property name="frameShadow">
-                            <enum>QFrame::Raised</enum>
+                           <property name="text">
+                            <string>Acceleration vs Time</string>
                            </property>
                           </widget>
                          </item>
-                         <item row="3" column="1">
+                         <item row="3" column="2">
+                          <widget class="QLabel" name="label_8">
+                           <property name="font">
+                            <font>
+                             <family>Segoe UI</family>
+                             <pointsize>9</pointsize>
+                             <weight>75</weight>
+                             <bold>true</bold>
+                            </font>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">margin-left: 5px;</string>
+                           </property>
+                           <property name="text">
+                            <string>Spatial View</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="4" column="2">
                           <widget class="QFrame" name="frame_4">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
@@ -2307,23 +2462,7 @@ border-radius: 5px;</string>
                            </property>
                           </widget>
                          </item>
-                         <item row="3" column="0">
-                          <widget class="QFrame" name="frame_7">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="frameShape">
-                            <enum>QFrame::StyledPanel</enum>
-                           </property>
-                           <property name="frameShadow">
-                            <enum>QFrame::Raised</enum>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="1" column="0">
+                         <item row="2" column="0">
                           <widget class="QFrame" name="frame_6">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -2339,25 +2478,39 @@ border-radius: 5px;</string>
                            </property>
                           </widget>
                          </item>
-                         <item row="0" column="0">
-                          <widget class="QLabel" name="label_4">
-                           <property name="font">
-                            <font>
-                             <family>Segoe UI</family>
-                             <pointsize>9</pointsize>
-                             <weight>75</weight>
-                             <bold>true</bold>
-                            </font>
+                         <item row="2" column="2">
+                          <widget class="QFrame" name="frame_5">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
                            </property>
-                           <property name="styleSheet">
-                            <string notr="true">margin-left: 5px;</string>
+                           <property name="frameShape">
+                            <enum>QFrame::StyledPanel</enum>
                            </property>
-                           <property name="text">
-                            <string>Angle vs Time</string>
+                           <property name="frameShadow">
+                            <enum>QFrame::Raised</enum>
                            </property>
                           </widget>
                          </item>
-                         <item row="0" column="1">
+                         <item row="4" column="0">
+                          <widget class="QFrame" name="frame_7">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="frameShape">
+                            <enum>QFrame::StyledPanel</enum>
+                           </property>
+                           <property name="frameShadow">
+                            <enum>QFrame::Raised</enum>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="1" column="2">
                           <widget class="QLabel" name="label_5">
                            <property name="font">
                             <font>
@@ -2375,8 +2528,8 @@ border-radius: 5px;</string>
                            </property>
                           </widget>
                          </item>
-                         <item row="2" column="0">
-                          <widget class="QLabel" name="label_7">
+                         <item row="1" column="0">
+                          <widget class="QLabel" name="label_4">
                            <property name="font">
                             <font>
                              <family>Segoe UI</family>
@@ -2389,25 +2542,7 @@ border-radius: 5px;</string>
                             <string notr="true">margin-left: 5px;</string>
                            </property>
                            <property name="text">
-                            <string>Acceleration vs Time</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="2" column="1">
-                          <widget class="QLabel" name="label_8">
-                           <property name="font">
-                            <font>
-                             <family>Segoe UI</family>
-                             <pointsize>9</pointsize>
-                             <weight>75</weight>
-                             <bold>true</bold>
-                            </font>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">margin-left: 5px;</string>
-                           </property>
-                           <property name="text">
-                            <string>Spatial View</string>
+                            <string>Angle vs Time</string>
                            </property>
                           </widget>
                          </item>

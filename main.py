@@ -3,7 +3,6 @@ from PyQt5.QtWidgets import (
     QApplication
 )
 from frontend.splash_screen import SplashScreen
-from frontend.calibration import Ui_Dialog
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

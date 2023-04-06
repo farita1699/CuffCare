@@ -14,7 +14,7 @@ class AccessDataThread(QThread):
     def __init__(self, shared_data):
         super().__init__()
         self.shared_data = shared_data
-        self.access_interval = 1 / 100
+        self.access_interval = 1 / 10
     
     def run(self):
         while True:
@@ -35,19 +35,27 @@ class Graph(QWidget):
         self._plot.setLabel('bottom', 'Time', units='s')
         self._plot.setYRange(0, 180)
 
+        #Public variables for assessing session data
+        self.session_time = 0
+        self.session_angle = 0
+
         #Initialize graph to be 0
         self._angleData = np.array([])
         self._time = np.array([])
-        self._count = 0
+        self.count = 0
 
         self._plot.plot(self._angleData, pen=(0, 229, 255))
         
-        # Create timer to update plot
+        #Timer to update real time plot
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.update)
 
-        #Create timer to update accuracy
+        #Timer to update accuracy
         self.timer2 = QtCore.QTimer()
+
+        #Timer to update session plot
+        self.timer3 = QtCore.QTimer()
+        self.timer3.timeout.connect(self.update_session_data)
         
     def update(self):
         if (len(self._angleData) > 20 and not self.timer2.isActive()):
@@ -56,16 +64,11 @@ class Graph(QWidget):
             print("start")
 
         if (self._angleData.size >= 100 and self._time.size >= 100):
-            # self._angleData = np.roll(self._angleData, -1)
-            # self._angleData = self._angleData[1:]
-            # self._time = np.roll(self._time, -1)
-            # self._time = self._time[1:]
-            # self._plot.setYRange(0, 180)
-            self._plot.setXRange(self._count - 10, self._count)
+            self._plot.setXRange(self.count - 10, self.count)
 
-        self._count += 0.1
+        self.count += 0.1
         self._angleData = np.append(self._angleData, shared_data['value'] * 100)
-        self._time = np.append(self._time, self._count)
+        self._time = np.append(self._time, self.count)
 
         self._idealY = np.sin(self._time) * 45 + 45
         self._plot.plot(self._time, self._angleData, pen=(0, 229, 255))
@@ -86,6 +89,23 @@ class Graph(QWidget):
         self.accuracy = round((total_score / n) * 100,2)
         self.accuracy_accessed.emit(self.accuracy)
         print(self.accuracy)
+
+    def update_session_data(self):
+        if (len(self._angleData) > 20 and not self.timer2.isActive()):
+            self.timer2.timeout.connect(self.calculate_accuracy)
+            self.timer2.start(2000)
+            print("start")
+
+        if (self._angleData.size >= 100 and self._time.size >= 100):
+            self._plot.setXRange(self.session_time - 10, self.session_time)
+
+        self._angleData = np.append(self._angleData, self.session_angle * 100)
+        self._time = np.append(self._time, self.session_time)
+
+        self._idealY = np.sin(self._time) * 45 + 45
+        self._plot.plot(self._time, self._angleData, pen=(0, 229, 255))
+        self._plot.plot(self._time, self._idealY, pen=(0, 255, 0))
+        
 
 class threeDGraph(GLViewWidget):
     def __init__(self, parent=None):
