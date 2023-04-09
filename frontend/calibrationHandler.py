@@ -4,23 +4,13 @@ from PyQt5.QtGui import QMovie
 from PyQt5.QtWidgets import QDialog
 from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtCore import pyqtSignal
-# from sensor.socketHandler import shared_data
-import threading
-import time
-
-calibration_value = None
+from sensor.socketHandler import shared_data
 
 class Calibration(QDialog, Ui_Dialog):
     calibration_done = pyqtSignal(int)
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setupUi(self)
-
-        #Sets up the gif
-        # self.movie = QMovie("load.gif")
-        # self.movie.setScaledSize(QtCore.QSize(100, 100)) # Set the scaled size
-        # self.label.setMovie(self.movie)
-        # self.movie.start()
 
         #Exits the screen if cancel button is clicked
         self.pushButton.clicked.connect(self.accept)
@@ -36,8 +26,7 @@ class Calibration(QDialog, Ui_Dialog):
         self.timer.start(1000)
 
     def checkCalibration(self):
-        # current_value = shared_data['value']
-        current_value = 0 #Test variable
+        current_value = shared_data['value']
 
         if (abs(current_value - self.prev_value) <= 5 and current_value < 25):
             self.countdown -= 1
@@ -47,8 +36,8 @@ class Calibration(QDialog, Ui_Dialog):
             self.label_3.setText("")
 
         if self.countdown_over:
-            global calibration_value
             calibration_value = current_value
+            print("Calibration value: ", calibration_value)
             self.calibration_done.emit(calibration_value)
             self.accept()
 
