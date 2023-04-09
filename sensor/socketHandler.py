@@ -4,6 +4,7 @@ import socket
 
 shared_data = {'value': 0}
 
+#Code for simulating ESP32 sending data
 def sensor_data_thread(shared_data):
     while True:
         shared_data['value'] = round(random.random() * 90,2)

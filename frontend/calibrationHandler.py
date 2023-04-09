@@ -3,7 +3,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtGui import QMovie
 from PyQt5.QtWidgets import QDialog
 from PyQt5 import QtCore, QtWidgets
-from PyQt5.QtCore import pyqtSignal
+from PyQt5.QtCore import pyqtSignal, Qt
 from sensor.socketHandler import shared_data
 
 class Calibration(QDialog, Ui_Dialog):
@@ -11,6 +11,10 @@ class Calibration(QDialog, Ui_Dialog):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setupUi(self)
+
+        #Make window frameless
+        self.setWindowFlags(Qt.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground)
 
         #Exits the screen if cancel button is clicked
         self.pushButton.clicked.connect(self.accept)

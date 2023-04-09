@@ -26,8 +26,8 @@ class SplashScreen(QWidget):
 
         self.frame = QFrame()
         self.frame.setStyleSheet('''QFrame {
-            background-color: #FFFFFF;
-            color: rgb(40, 40, 40);
+            background-color: #2F4454;
+            color: rgb(220, 220, 220);
             border-radius: 10px;
         }''')
         layout.addWidget(self.frame)
@@ -42,29 +42,20 @@ class SplashScreen(QWidget):
         self.labelTitle.setAlignment(Qt.AlignCenter)
         self.labelTitle.setStyleSheet('''#LabelTitle {
             font-size: 60px;
-            color: #0077C0;
+            color: #93deed;
             font-weight: bold;
         }''')
-        # self.labelTitle.setStyleSheet('''#LabelTitle {
-        #     font-size: 60px;
-        #     color: #000000;
-        #     font-weight: bold;
-        # }''')
 
         self.labelDescription = QLabel(self.frame)
         self.labelDescription.resize(self.width() - 10, 50)
         self.labelDescription.move(0, self.labelTitle.height())
         self.labelDescription.setObjectName('LabelDesc')
-        self.labelDescription.setText('Placeholder text 1')
+        self.labelDescription.setText('Welcome to CuffCare!')
         self.labelDescription.setAlignment(Qt.AlignCenter)
         self.labelDescription.setStyleSheet('''#LabelDesc {
             font-size: 30px;
-            color: #0077C0;
+            color: #c2ced1;
         }''')
-        # self.labelDescription.setStyleSheet('''#LabelDesc {
-        #     font-size: 30px;
-        #     color: #000000;
-        # }''')
 
         self.progressBar = QProgressBar(self.frame)
         self.progressBar.resize(self.width() - 200 - 10, 50)
@@ -75,8 +66,8 @@ class SplashScreen(QWidget):
         self.progressBar.setRange(0, self.n)
         self.progressBar.setValue(20)
         self.progressBar.setStyleSheet('''QProgressBar {
-            background-color: #B8CCE4;
-            color: rgb(40, 40, 40);
+            background-color: #DA7B93;
+            color: rgb(200, 200, 200);
             border-style: none;
             border-radius: 10px;
             text-align: center;
@@ -85,7 +76,7 @@ class SplashScreen(QWidget):
 
         QProgressBar::chunk {
             border-radius: 10px;
-            background-color: qlineargradient(spread:pad x1:0, x2:1, y1:0.511364, y2:0.523, stop:0 #0077C0, stop:1 #61A8DE);
+            background-color: qlineargradient(spread:pad x1:0, x2:1, y1:0.511364, y2:0.523, stop:0 #1C3334, stop:1 #376E6F);
         }''')
 
         self.labelLoading = QLabel(self.frame)
@@ -96,14 +87,14 @@ class SplashScreen(QWidget):
         self.labelLoading.setText('Connecting to the device...')
         self.labelLoading.setStyleSheet('''#LabelLoading {
             font-size: 30px;
-            color: #0077C0;
+            color: #e8e8eb;
         }''')
 
     def loading(self):
         self.progressBar.setValue(self.counter)
 
         if self.counter == int(self.n * 0.5):
-            self.labelDescription.setText('Placeholder text 2')
+            self.labelDescription.setText('Transforming rotator cuff recovery for patients and physicians alike.')
         elif self.counter >= self.n:
             self.timer.stop()
             self.close()

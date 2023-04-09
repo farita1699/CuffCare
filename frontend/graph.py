@@ -105,7 +105,7 @@ class Graph(QWidget):
         if (self._angleData.size >= 100 and self._time.size >= 100):
             self._plot.setXRange(self.session_time - 10, self.session_time)
 
-        self._angleData = np.append(self._angleData, self.session_angle * 100)
+        self._angleData = np.append(self._angleData, self.session_angle)
         self._time = np.append(self._time, self.session_time)
 
         self._idealY = np.sin(self._time) * 45 + 45

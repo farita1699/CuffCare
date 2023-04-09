@@ -1,18 +1,25 @@
-from frontend.test_dashboard import Ui_MainWindow
+from frontend.dashboard import Ui_MainWindow
 from PyQt5.QtWidgets import QMainWindow
-from PyQt5.QtWidgets import QVBoxLayout
+from PyQt5.QtWidgets import QVBoxLayout, QMessageBox
 from PyQt5.QtCore import Qt
 from frontend.graph import Graph, AccessDataThread, threeDGraph, GraphVelocity, GraphAcceleration
 from sensor.socketHandler import shared_data
 from frontend.calibrationHandler import Calibration
 from frontend.csvHandler import CSVHandler
 from utility.utility import stopBlinkingAnimation
+from utility.login import *
 
 
 class Dashboard(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setupUi(self)
+
+        self.stackedWidget.setCurrentIndex(0)
+
+        ##Connect signup and login buttons
+        self.pushButton_4.clicked.connect(self.register)
+        self.pushButton_5.clicked.connect(self.login)
 
         #Make window frameless
         self.setWindowFlags(Qt.FramelessWindowHint)
@@ -22,6 +29,7 @@ class Dashboard(QMainWindow, Ui_MainWindow):
         self.btn_minimize.clicked.connect(self.showMinimized)
         self.btn_maximize_restore.clicked.connect(self.toggle_maximize_restore)
         self.btn_close.clicked.connect(self.close)
+        self.pushButton_6.clicked.connect(self.logoff)
 
         #Poll the socketHandler for sensor data
         self.access_data_thread = AccessDataThread(shared_data)
@@ -46,13 +54,59 @@ class Dashboard(QMainWindow, Ui_MainWindow):
         #Connect signals from the graphs
         self.graph_d.accuracy_accessed.connect(self.update_accuracy)
 
+    def show_register_popup(self, input):
+        msg = QMessageBox()
+        msg.setWindowTitle("Cuffcare")
+        if (input == 1):
+            msg.setText("Duplicate username detected")
+        elif(input == 2):
+            msg.setText("Inappropriate Password: You must have a minimum 8 character password with an uppercase and lowercase letter, no spaces, and at least 1 digit.")
+        elif(input == 3):
+            msg.setText("Inappropriate Username: You must have a username with no spaces!")
+        else:
+            pass
+        x = msg.exec_()
+
+    def show_login_popup(self):
+        msg = QMessageBox()
+        msg.setWindowTitle("Cuffcare Login")
+        msg.setText("Your Username and/or Password is invalid")
+        x = msg.exec_()
+
+    def register(self):
+        if (check_duplicate(self.UsernameInput.text())):
+            print("Duplicate detected")
+            self.show_register_popup(1)
+        elif(check_new_password(self.PasswordInput.text())):
+            print("Inappropriate Password")
+            self.show_register_popup(2)
+        elif(check_new_username(self.UsernameInput.text())):
+            print("Inappropriate Username")
+            self.show_register_popup(3)
+        else:
+            create_new_user(self.UsernameInput.text(), self.PasswordInput.text())   
+
+    def login(self):
+        user_id = login_check(self.UsernameInput.text(), self.PasswordInput.text())
+        if (user_id):
+            self.stackedWidget.setCurrentIndex(1)
+            self.label_user_icon.setText(self.UsernameInput.text()[0])
+
+            # Clear input fields after successful login
+            self.UsernameInput.setText("")
+            self.PasswordInput.setText("")
+        else:
+            self.show_login_popup()
+
+    def logoff(self):
+        self.stackedWidget.setCurrentIndex(0)
+        self.label_user_icon.setText("G")
+
     def toggle_maximize_restore(self):
         if self.isMaximized():
             self.showNormal()
-            self.btn_maximize_restore.setText('Maximize')
         else:
             self.showMaximized()
-            self.btn_maximize_restore.setText('Restore')
     
     def create_graphs(self):
         # Create a QVBoxLayout
@@ -145,7 +199,7 @@ class Dashboard(QMainWindow, Ui_MainWindow):
             self.graph_d.timer.start(100)
             self.graph_v.timer.start(100)
             self.graph_a.timer.start(100)
-            self.calibration.timer.stop()
+            #self.calibration.timer.stop()
 
             #Create new session report
             self.report.start_writing()
